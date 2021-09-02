@@ -21,5 +21,5 @@ export DIRENV_CONFIG="${WILDENV_ROOT_DIR}/etc/direnv"
 
 eval "$(direnv hook bash)"
 
-. "${WILDENV_ROOT_DIR}/etc/bash/completion/fzf.bash"
-. "${WILDENV_ROOT_DIR}/etc/bash/key-bindings/fzf.bash"
+. "${WILDENV_ROOT_DIR}/etc/bash/completion/fzf"
+. "${WILDENV_ROOT_DIR}/etc/bash/key-bindings/fzf"

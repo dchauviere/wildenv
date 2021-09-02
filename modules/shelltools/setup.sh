@@ -1,11 +1,6 @@
 #!/bin/bash
 
-function pip_install() {
-  local _pkgs=( "$@" )
-  . "${WILDENV_ROOT_DIR}/python/bin/activate"
-  pip install "${_pkgs[@]}"
-  deactivate
-}
+source "$(dirname "${BASH_SOURCE[0]}")/../../lib/wildenv.lib.sh"
 
 # Direnv
 mkdir -p "${WILDENV_ROOT_DIR}/"{etc/direnv,share/direnv/{cache,data}}
@@ -16,8 +11,8 @@ cp "$(dirname ${BASH_SOURCE[0]})/files/direnv.toml" "${WILDENV_ROOT_DIR}/etc/dir
 # Fzf
 curl -sL 'https://github.com/junegunn/fzf/releases/download/0.27.2/fzf-0.27.2-linux_amd64.tar.gz' | tar xzf - -C "${WILDENV_ROOT_DIR}/bin"
 curl -sL -o "${WILDENV_ROOT_DIR}/bin/fzf-tmux" "https://github.com/junegunn/fzf/raw/master/bin/fzf-tmux"
-curl -sL -o "${WILDENV_ROOT_DIR}/etc/bash/completion/fzf.bash" "https://github.com/junegunn/fzf/raw/master/shell/completion.bash"
-curl -sL -o "${WILDENV_ROOT_DIR}/etc/bash/key-bindings/fzf.bash" "https://github.com/junegunn/fzf/raw/master/shell/key-bindings.bash"
+curl -sL -o "${WILDENV_ROOT_DIR}/etc/bash/completion/fzf" "https://github.com/junegunn/fzf/raw/master/shell/completion.bash"
+curl -sL -o "${WILDENV_ROOT_DIR}/etc/bash/key-bindings/fzf" "https://github.com/junegunn/fzf/raw/master/shell/key-bindings.bash"
 chmod a+x "${WILDENV_ROOT_DIR}/bin/fzf"*
 
 # Ripgrep
