@@ -30,3 +30,7 @@ ln -s "${WILDENV_ROOT_DIR}/python/bin/yq" "${WILDENV_ROOT_DIR}/bin/yq"
 curl -sL -o "${WILDENV_ROOT_DIR}/bin/powerline-go" "https://github.com/justjanne/powerline-go/releases/download/v1.21.0/powerline-go-linux-amd64"
 chmod a+x "${WILDENV_ROOT_DIR}/bin/powerline-go"
 cp "$(dirname ${BASH_SOURCE[0]})/files/powerline-go.theme.json" "${WILDENV_ROOT_DIR}/etc/powerline-go.theme.json"
+
+# Zellij
+curl -sL 'https://github.com/zellij-org/zellij/releases/download/v0.16.0/zellij-x86_64-unknown-linux-musl.tar.gz' |tar xzf - -C "${WILDENV_ROOT_DIR}/bin/"
+chmod a+x "${WILDENV_ROOT_DIR}/bin/zellij"
