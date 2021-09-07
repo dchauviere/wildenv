@@ -14,9 +14,24 @@ setup)
   if [[ ! -f "${WILDENV_ROOT_DIR}" ]]; then
     mkdir -p "${WILDENV_ROOT_DIR}/"{bin,etc/bash/{completion,key-bindings},man}
     python3 -m venv "${WILDENV_ROOT_DIR}/python"
-    for module in shelltools git kubernetes; do
-      "${WILDENV_SCRIPT_DIR}/modules/${module}/setup.sh"
+
+    IFS=':' read -r -a _modules <<< "${WILDENV_MODULES}"
+    IFS=':' read -r -a _modules_dirs <<< "${WILDENV_MODULES_DIRS}"
+
+    for _module in "${_modules[@]}"; do
+      _module_found=1
+      for _modules_dir in "${_modules_dirs[@]}"; do
+        if [[ -d "${_modules_dir}/modules/${_module}" ]]; then
+          "${_modules_dir}/modules/${_module}/setup.sh"
+          _module_found=0
+          break
+        fi
+      done
+      if [[ $_module_found -eq 1 ]]; then
+        printf 'Module %s not found.\n' $_module
+      fi
     done
+    
   else
     printf "Directory %s already exists." "${WILDENV_ROOT_DIR}"
   fi

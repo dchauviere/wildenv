@@ -3,7 +3,7 @@
 export WILDENV_ROOT_DIR=${WILDENV_ROOT_DIR:-$HOME/.wildenv}
 WILDENV_SCRIPT_DIR="$(dirname ${BASH_SOURCE[0]})"
 
-export WILDENV_MODULES_DIRS=${WILDENV_MODULES_DIRS:-"${WILDENV_SCRIPT_DIR}/modules"}
+export WILDENV_MODULES_DIRS=${WILDENV_MODULES_DIRS:-"${WILDENV_SCRIPT_DIR}"}
 export WILDENV_MODULES=${WILDENV_MODULES:-shelltools:kubernetes}
 
 if [[ ! -d "${WILDENV_ROOT_DIR}" ]]; then
@@ -19,8 +19,8 @@ else
   for _module in "${_modules[@]}"; do
     _module_found=1
     for _modules_dir in "${_modules_dirs[@]}"; do
-      if [[ -d "${_modules_dir}/${_module}" ]]; then
-        . "${_modules_dir}/${_module}/bashrc.sh"
+      if [[ -d "${_modules_dir}/modules/${_module}" ]]; then
+        . "${_modules_dir}/modules/${_module}/bashrc.sh"
         _module_found=0
         break
       fi
