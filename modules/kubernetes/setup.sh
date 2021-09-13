@@ -7,3 +7,5 @@ chmod a+x "${WILDENV_ROOT_DIR}/bin/"{kubectl,kubectx,kubens}
 
 curl -sL -o "${WILDENV_ROOT_DIR}/etc/bash/completion/kubectx" "https://github.com/ahmetb/kubectx/raw/master/completion/kubectx.bash"
 curl -sL -o "${WILDENV_ROOT_DIR}/etc/bash/completion/kubens" "https://github.com/ahmetb/kubectx/raw/master/completion/kubens.bash"
+
+curl -sL "https://get.helm.sh/helm-v3.6.3-linux-amd64.tar.gz" |tar xz -C "${WILDENV_ROOT_DIR}/bin/" --strip-components=1 linux-amd64/helm

@@ -8,7 +8,7 @@ complete -F __start_kubectl k
 
 function _kubectl_helper() {
   local _cmd=$@
-  local _object=$(kubectl get all -o name | fzf --preview "kubectl describe {}")
+  local _object=$(kubectl get all --no-headers -o name | fzf --info=inline --layout=reverse --border --prompt "$(kubectl config current-context | sed 's/-context$//')> " --preview-window "right,follow" --preview "kubectl describe {}")
   [[ "$_object" = "" ]]&& return
   kubectl $_cmd "${_object%% *}"
 }
