@@ -34,3 +34,6 @@ cp "$(dirname ${BASH_SOURCE[0]})/files/powerline-go.theme.json" "${WILDENV_ROOT_
 # Zellij
 curl -sL 'https://github.com/zellij-org/zellij/releases/download/v0.16.0/zellij-x86_64-unknown-linux-musl.tar.gz' |tar xzf - -C "${WILDENV_ROOT_DIR}/bin/"
 chmod a+x "${WILDENV_ROOT_DIR}/bin/zellij"
+
+# Shellcheck
+curl -sL "https://github.com/koalaman/shellcheck/releases/download/v0.7.2/shellcheck-v0.7.2.linux.x86_64.tar.xz" |tar xJ --strip-components=1 -C "${WILDENV_ROOT_DIR}/bin" --wildcards */shellcheck

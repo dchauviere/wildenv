@@ -3,7 +3,7 @@
 function _shelltools_update_ps1() {
   PS1="$("${WILDENV_ROOT_DIR}/bin/powerline-go" \
     -error $? \
-    -modules "${WILDENV_SHELLTOOLS_POWERLINE_GO_MODULES:-exit,ssh,perms,cwd,git,docker-context,kube}" \
+    -modules "${WILDENV_SHELLTOOLS_POWERLINE_GO_MODULES:-exit,ssh,perms,cwd,git,docker-context,kube,venv}" \
     -newline \
     -path-aliases \~/src/paas/paas-manifests=@PAAS \
     -shell bash \
