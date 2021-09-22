@@ -17,3 +17,5 @@ alias kl="_kubectl_helper logs"
 alias kd="_kubectl_helper describe"
 
 _fzf_setup_completion path kubectl k
+
+eval "$(k3d completion bash)"
