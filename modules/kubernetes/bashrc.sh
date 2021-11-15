@@ -15,6 +15,7 @@ function _kubectl_helper() {
 
 alias kl="_kubectl_helper logs"
 alias kd="_kubectl_helper describe"
+alias kx="kubectl get pods --no-headers | fzf | awk '{print $1}' | xargs -o -I % kubectl exec -it % bash"
 
 _fzf_setup_completion path kubectl k
 

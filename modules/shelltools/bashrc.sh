@@ -23,3 +23,5 @@ eval "$(direnv hook bash)"
 
 . "${WILDENV_ROOT_DIR}/etc/bash/completion/fzf"
 . "${WILDENV_ROOT_DIR}/etc/bash/key-bindings/fzf"
+. "${WILDENV_ROOT_DIR}/etc/bash/completion/fzf-bash-completion.sh"
+bind -x '"\t": fzf_bash_completion'

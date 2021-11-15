@@ -8,11 +8,16 @@ curl -sL -o "${WILDENV_ROOT_DIR}/bin/direnv" "https://github.com/direnv/direnv/r
 chmod a+x "${WILDENV_ROOT_DIR}/bin/direnv"
 cp "$(dirname ${BASH_SOURCE[0]})/files/direnv.toml" "${WILDENV_ROOT_DIR}/etc/direnv/direnv.toml"
 
+# bat
+sudo apt-get install -y bat
+ln -s /usr/bin/batcat "${WILDENV_ROOT_DIR}/bin/bat"
+
 # Fzf
 curl -sL 'https://github.com/junegunn/fzf/releases/download/0.27.2/fzf-0.27.2-linux_amd64.tar.gz' | tar xzf - -C "${WILDENV_ROOT_DIR}/bin"
 curl -sL -o "${WILDENV_ROOT_DIR}/bin/fzf-tmux" "https://github.com/junegunn/fzf/raw/master/bin/fzf-tmux"
 curl -sL -o "${WILDENV_ROOT_DIR}/etc/bash/completion/fzf" "https://github.com/junegunn/fzf/raw/master/shell/completion.bash"
 curl -sL -o "${WILDENV_ROOT_DIR}/etc/bash/key-bindings/fzf" "https://github.com/junegunn/fzf/raw/master/shell/key-bindings.bash"
+curl -sL -o "${WILDENV_ROOT_DIR}/etc/bash/completion/fzf-bash-completion.sh" "https://github.com/lincheney/fzf-tab-completion/raw/master/bash/fzf-bash-completion.sh"
 chmod a+x "${WILDENV_ROOT_DIR}/bin/fzf"*
 
 # Ripgrep
