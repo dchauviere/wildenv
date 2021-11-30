@@ -38,7 +38,13 @@ setup)
   ;;
 dep)
   sudo apt-get update
-  sudo apt-get install -y python3-venv curl git git-crypt gnupg
+  sudo apt-get install -y python3-venv curl git git-crypt gnupg fonts-powerline
+  mkdir -p "${WILDENV_ROOT_DIR}/tmp/" "$HOME/.local/share/fonts/."
+  git clone https://github.com/powerline/fonts "${WILDENV_ROOT_DIR}/tmp/fonts"
+  git clone https://github.com/abertsch/Menlo-for-Powerline "${WILDENV_ROOT_DIR}/tmp/fonts2"
+  cp "${WILDENV_ROOT_DIR}"/tmp/fonts2/*.ttf "$HOME/.local/share/fonts/."
+  "${WILDENV_ROOT_DIR}/tmp/fonts/install.sh"
+  rm -rf "${WILDENV_ROOT_DIR}/tmp/fonts"
   ;;
 *)
   usage

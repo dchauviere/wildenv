@@ -20,7 +20,7 @@ else
     _module_found=1
     for _modules_dir in "${_modules_dirs[@]}"; do
       if [[ -d "${_modules_dir}/modules/${_module}" ]]; then
-        . "${_modules_dir}/modules/${_module}/bashrc.sh"
+        [[ -f "${_modules_dir}/modules/${_module}/bashrc.sh" ]] && . "${_modules_dir}/modules/${_module}/bashrc.sh"
         _module_found=0
         break
       fi
