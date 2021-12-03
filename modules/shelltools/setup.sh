@@ -42,3 +42,7 @@ chmod a+x "${WILDENV_ROOT_DIR}/bin/zellij"
 
 # Shellcheck
 curl -sL "https://github.com/koalaman/shellcheck/releases/download/v0.7.2/shellcheck-v0.7.2.linux.x86_64.tar.xz" |tar xJ --strip-components=1 -C "${WILDENV_ROOT_DIR}/bin" --wildcards */shellcheck
+
+# Restic
+curl -sL "https://github.com/restic/restic/releases/download/v0.12.1/restic_0.12.1_linux_amd64.bz2" | bzip2 -d -c > "${WILDENV_ROOT_DIR}/bin/restic"
+chmod a+x "${WILDENV_ROOT_DIR}/bin/restic"
