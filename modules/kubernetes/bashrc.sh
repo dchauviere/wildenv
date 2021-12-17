@@ -11,13 +11,16 @@ function _khelper() {
 
   case "$_cmd" in
   describe)
-    kubectl get all,networkpolicies,sa,roles,rolebindings,configmaps,secrets "${_args[@]}" --no-headers -o name | \
+    _object=$(kubectl get all,networkpolicies,sa,roles,rolebindings,configmaps,secrets "${_args[@]}" --no-headers -o name | \
       fzf --info=inline \
           --layout=reverse \
           --border \
           --prompt "Describe> " \
           --preview-window "right" \
           --preview "kubectl describe {} ${_args[*]}| bat -l yaml --color always --style=plain"
+    )
+    [[ "$_object" = "" ]]&& return
+    kubectl describe "${_args[@]}" "${_object%% *}"
     ;;
   logs)
     _object=$(kubectl get pods,daemonsets,deployments,replicasets "${_args[@]}" --no-headers -o name | \
